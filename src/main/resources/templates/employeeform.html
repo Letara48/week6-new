@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Employee Form</h1>
+<form action="#" th:action="@{/processEmployee}" th:object="${employee}" method="post">
+    <input type="hidden" th:field="*{id}" />
+    Employee Name:   <input type="text" th:field="*{name}" />
+    <span th:if="${#fields.hasErrors('name')}"
+          th:erros="*{name}"></span><br />
+
+    Employee Job Title:   <input type="text" th:field="*{job_title}" />
+    <span th:if="${#fields.hasErrors ('job_title')}"
+          th:errors="*{job_title}"></span><br />
+    <br />
+    <input type="submit" value="Submit">
+
+    <select name="department" th:field="*{department}">
+        <option th:each="department : ${departments}"
+                th:value="${department.id}"
+                th:text="${department.title}"></option>
+    </select>
+
+    <input type="submit" value="Submit" />
+
+</form>
+</body>
+</html>

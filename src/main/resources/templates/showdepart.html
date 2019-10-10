@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+</head>
+<body>
+<a href="/">Show all Departments</a><br />
+Department Name:	<span th:text="${department.name}"></span><br />
+
+<a th:href="@{/delete/{id}(id=${department.departmentid})}">Delete this department</a>
+</body>
+</html>
