@@ -16,11 +16,11 @@
     <span th:if="${#fields.hasErrors ('job_title')}"
           th:errors="*{job_title}"></span><br />
     <br />
-    <input type="submit" value="Submit">
+
 
     <select name="department" th:field="*{department}">
         <option th:each="department : ${departments}"
-                th:value="${department.id}"
+                th:value="${department.deptid}"
                 th:text="${department.title}"></option>
     </select>
 

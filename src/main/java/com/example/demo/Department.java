@@ -11,9 +11,17 @@ public class Department {
     private String title;
 
 
-    @OneToMany(mappedBy = "employees", cascade = CascadeType.ALL,
+    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL,
             fetch = FetchType.EAGER)
     public Set<Employee> employees;
+
+    public Department() {
+    }
+
+    public Department(String title, Set<Employee> employees) {
+        this.title = title;
+        this.employees = employees;
+    }
 
     public String getTitle() {
         return title;
@@ -38,6 +46,7 @@ public class Department {
     public void setEmployees(Set<Employee> employees) {
         this.employees = employees;
     }
+
 
     public long getDeptid() {
         return deptid;

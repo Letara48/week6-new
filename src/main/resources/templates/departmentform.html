@@ -7,10 +7,10 @@
 <body>
 <h1>Department Form</h1>
 <form action="#" th:action="@{/processDept}" th:object="${department}" method="post">
-    <input type="hidden" th:field="*{department_id}" />
+    <input type="hidden" th:field="*{deptid}" />
     Department Name:   <input type="text" th:field="*{title}" />
     <span th:if="${#fields.hasErrors('title')}"
-          th:erros="*{title}"></span><br />
+          th:errors="*{title}"></span><br />
 
     <br />
     <input type="submit" value="Submit" />

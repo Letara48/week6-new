@@ -5,6 +5,9 @@
     <title>Title</title>
 </head>
 <body>
+<a href="/">Home</a><br/>
+<a href="/employeelist">Employee list</a><br/>
+<h1>Department List</h1><a href="/adddept">Add Departments</a><br/><a href="/addEmployee">Add Employees</a></br>
 <table>
     <tr>
         <th>Title</th>
@@ -18,5 +21,16 @@
             <a th:href="@{/deleteDepartment/{id}(id=${department.deptid})}">Delete</a>
         </td></tr>
 </table>
+
+<div th:each="department:${departments}">
+    <h2 th:text="${department.title}"></h2>
+    <ul>
+        <th:block th:each="employee :${department.employees}">
+            <li th:inline="text">[[${employee.name}]] does [[${employee.job_title}]]</li>
+        </th:block>
+    </ul>
+
+
+</div>
 </body>
 </html>

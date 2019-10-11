@@ -2,12 +2,29 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>Title</title>
+    <title>Departments</title>
 </head>
 <body>
-<a href="/">Show all Departments</a><br />
-Department Name:	<span th:text="${department.name}"></span><br />
+<a href="/">Home</a><br />
+<a href="/deptlist">Department List</a>
+<a href="/employeelist">Employee List</a>
 
-<a th:href="@{/delete/{id}(id=${department.departmentid})}">Delete this department</a>
+<h1> Departments</h1><a href="/adddept">Add Departments</a>
+Department Name:	<span th:text="${department.title}"></span><br />
+
+<span>Employees:</span><br>
+
+<tr>
+    <th>Employee Name</th>
+    <th>Employee Job Title</th>
+
+</tr>
+
+<tr th:each="employee : ${department.employees}">
+    <td th:text="${employee.name}"></td>
+    <td th:text="${employee.job_title}"}></td>
+</tr>
+
+
 </body>
 </html>

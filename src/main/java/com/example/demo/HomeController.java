@@ -50,13 +50,13 @@ public class HomeController {
     @RequestMapping("/detailDept/{id}")
     public String showDepartment(@PathVariable("id") long id, Model model)
     {
-        model.addAttribute("department", departmentRepository.findAllById(id).get());
+        model.addAttribute("department", departmentRepository.findById(id).get());
         return "showdepart";
     }
     @RequestMapping("/updateDept/{id}")
     public String updateDepartment(@PathVariable("id") long id,
                                    Model model){
-        model.addAttribute("department", departmentRepository.findAllById(id).get());
+        model.addAttribute("department", departmentRepository.findById(id).get());
         return "departmentform";
     }
     @RequestMapping("/deleteDept/{id}")
@@ -84,20 +84,20 @@ public class HomeController {
     @RequestMapping("/detailEmployee/{id}")
     public String showEmployee(@PathVariable("id") long id, Model model)
     {
-        model.addAttribute("employee", employeeRepository.findAllById(id).get());
-        return "showdepart";
+        model.addAttribute("employee", employeeRepository.findById(id).get());
+        return "showemployee";
     }
     @RequestMapping("/updateEmployee/{id}")
     public String updateEmployee(@PathVariable("id") long id,
                                  Model model){
-        model.addAttribute("employees", employeeRepository.findAllById(id).get());
+        model.addAttribute("employees", employeeRepository.findById(id).get());
         model.addAttribute("departments",departmentRepository.findAll());
         return "employeeform";
     }
     @RequestMapping("/deleteEmployee/{id}")
     public String delEmployee(@PathVariable("id") long id){
         employeeRepository.deleteById(id);
-        return "redirect:/index";
+        return "redirect:/";
     }
     @RequestMapping("/employeelist")
     public String employeeList(Model model){
