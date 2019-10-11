@@ -11,16 +11,16 @@ public class Department {
     private String title;
 
 
-    @OneToMany(mappedBy = "department", cascade = CascadeType.ALL,
+    @OneToMany(mappedBy = "department", orphanRemoval = true,
             fetch = FetchType.EAGER)
     public Set<Employee> employees;
+
 
     public Department() {
     }
 
-    public Department(String title, Set<Employee> employees) {
+    public Department(String title) {
         this.title = title;
-        this.employees = employees;
     }
 
     public String getTitle() {

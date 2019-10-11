@@ -53,25 +53,25 @@ public class HomeController {
         model.addAttribute("department", departmentRepository.findById(id).get());
         return "showdepart";
     }
-    @RequestMapping("/updateDept/{id}")
-    public String updateDepartment(@PathVariable("id") long id,
-                                   Model model){
-        model.addAttribute("department", departmentRepository.findById(id).get());
-        return "departmentform";
-    }
-    @RequestMapping("/deleteDept/{id}")
-    public String delDepartment(@PathVariable("id") long id){
-        departmentRepository.deleteById(id);
-        return "redirect:/";
-    }
+//    @RequestMapping("/updateDept/{id}")
+//    public String updateDepartment(@PathVariable("id") long id,
+//                                   Model model){
+//        model.addAttribute("department", departmentRepository.findById(id).get());
+//        return "departmentform";
+//    }
+//    @RequestMapping("/deleteDept/{id}")
+//    public String delDepartment(@PathVariable("id") long id){
+//        departmentRepository.deleteById(id);
+//        return "redirect:/";
+//    }
     //Employee -----------------------------
 
     @GetMapping("/addEmployee")
     public String employeeForm(Model model){
+        model.addAttribute("departments", departmentRepository.findAll());
         model.addAttribute("employee", new Employee());
         return "employeeform";
     }
-
     @PostMapping("/processEmployee")
     public String processForm2(@Valid Employee employee,
                               BindingResult result){
@@ -79,7 +79,7 @@ public class HomeController {
             return "employeeform";
         }
         employeeRepository.save(employee);
-        return "redirect:/";
+        return "redirect:/employeelist";
     }
     @RequestMapping("/detailEmployee/{id}")
     public String showEmployee(@PathVariable("id") long id, Model model)
@@ -90,7 +90,7 @@ public class HomeController {
     @RequestMapping("/updateEmployee/{id}")
     public String updateEmployee(@PathVariable("id") long id,
                                  Model model){
-        model.addAttribute("employees", employeeRepository.findById(id).get());
+        model.addAttribute("employee", employeeRepository.findById(id).get());
         model.addAttribute("departments",departmentRepository.findAll());
         return "employeeform";
     }

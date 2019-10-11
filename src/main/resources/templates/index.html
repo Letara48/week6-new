@@ -4,50 +4,58 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <style> body {
+        background: url("https://media.defense.gov/2012/Jun/06/2000145259/-1/-1/0/120605-F-SF323-004.JPG") no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 </head>
 
 <body>
-<a href="/deptlist">Department list</a>
-<a href="/employeelist">Employee list</a><br/>
-<!--<a href="/adddept">Add an department</a>-->
-<!--<a href="/addEmployee">Add a employee</a>-->
+<!--Navigation Bar-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Sterling Solutions, Inc</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/employeelist">List of Added Employees</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/deptlist">List of Added Departments</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    To Add Departments and Employees
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="/adddept">Add Departments</a>
+                    <a class="dropdown-item" href="/addEmployee">Add Employees</a>
+                    <a class="dropdown-item" href="/">Home Page</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!--Navigation Bar-->
+<h1>Welcome to the Sterling Solutions, Inc. Directory</h1>
+<h2><a href="/adddept">Begin by adding an department</a></h2><a href="/adddept" class="btn btn-sm btn-hover btn-primary">Add a Department</a>
+<h2><a href="/addEmployee">Then add a employee</a></h2><a href="/addEmployee" class="btn btn-sm btn-hover btn-primary">Add an Employee</a>
 <br/>
-<h1>Departments</h1>
-<table>
-    <tr>
-        <th>Department Name</th>
-        <th>Company Name</th>
-    </tr>
-    <tr th:each="department : ${departments}">
 
-        <td th:text="${department.title}"></td>
-        <td>
-            <a th:href="@{update_department/{id}(id=${department.deptid})}">Update</a>
-            <a th:href="@{detail_department/{id}(id=${department.deptid})}">Details</a>
-            <a th:href="@{delete_department/{id}(id=${department.deptid})}">Delete</a>
-        </td>
-    </tr>
-</table>
 
-<h1 >employees</h1>
-
-<table>
-    <tr>
-        <th>Employee Name</th>
-        <th>Employee Job Title</th>
-    </tr>
-    <tr th:each="employee : ${employees}">
-        <td th:text="${employee.name}"></td>
-        <td th:text="${employee.job_title}"></td>
-        
-        <td>
-            <a th:href="@{updateEmployee/{id}(id=${employee.id})}">Update</a>
-            <a th:href="@{detailEmployee/{id}(id=${employee.id})}">Details</a>
-            <a th:href="@{deleteEmployee/{id}(id=${employee.id})}">Delete</a>
-        </td>
-    </tr>
-</table>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
-
 </html>
